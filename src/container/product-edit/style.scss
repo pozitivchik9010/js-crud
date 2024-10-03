@@ -1,0 +1,97 @@
+@use '../../lib/service.scss' as s;
+
+
+.content {
+	display: flex;
+    gap: 30px;
+    margin: 10px;
+    flex-direction: column;
+	
+}
+
+.content__title {
+	font-size: 32px;
+	font-weight: bold;
+	 padding-bottom: s.space(1);
+	color: #133ae9;
+}
+.form { 
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	margin: auto;
+	gap: 16px;
+	
+	&__title {
+   font-size: 20px;
+	}
+	
+	&__content {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 15px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: s.space(3);
+		width: 100%;
+		row-gap: s.space(2);
+	}
+
+	&__label {
+		font-size: 14px;
+	}
+
+	&__input {
+		border: 1px solid s.color('light');
+		padding: s.space(2);
+		width: 100%;
+  		border-radius: 4px;
+		
+	&--big {
+		height: 100px;
+	}}
+
+	&__span {
+		font-size: 12px;
+		color: #777;
+	}
+}
+
+
+.button-group {
+	display: flex;
+	gap: 10px;
+	width: 100%;
+	justify-content: space-between;
+	padding: 20px 0px;
+    margin-top: 20px;
+
+}
+.button {
+	display: inline-block;
+	text-align: center;
+	font-size: 16px;
+	width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+	  	
+	&__delete {
+		background-color: #ff0000;
+   		 opacity: 1; }
+
+}
+
+button:hover {
+    opacity: 0.7; 
+}

@@ -1,0 +1,21 @@
+<section>
+	<div class="form">
+		<h1 class="form__title">Список товарів</h1>
+		<div class="product-list">
+			{{#with data.products}}
+			{{#if isEmpty}}
+			<mark>Пустий</mark>
+			{{else}}
+			<ul class="card__list">
+				{{#each list}}
+				<li>
+					{{> productCard}}
+				</li>
+				{{/each}}
+
+			</ul>
+			{{/if}}
+			{{/with}}
+		</div>
+	</div>
+</section>

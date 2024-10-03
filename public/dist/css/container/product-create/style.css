@@ -1,0 +1,83 @@
+.content {
+  display: flex;
+  gap: 16px;
+  margin: 10px;
+  flex-direction: column;
+}
+
+.content__title {
+  font-size: 32px;
+  font-weight: bold;
+  padding-bottom: 4px;
+  color: #133ae9;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: auto;
+  gap: 16px;
+}
+.form__card {
+  display: grid;
+  gap: 12px;
+}
+.form__title {
+  font-size: 32px;
+  font-weight: bold;
+  padding-bottom: 4px;
+  color: #133ae9;
+}
+.form__content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 24px;
+  width: 100%;
+}
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  row-gap: 12px;
+}
+.form__field:nth-child(3) {
+  grid-column: span 2;
+  height: 100%;
+  max-height: max-content;
+}
+.form__label {
+  font-size: 14px;
+}
+.form__input {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.form__button {
+  display: grid;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: rgb(48, 48, 238);
+  transition: background-color 0.3s;
+  color: white;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+/*# sourceMappingURL=style.css.map */

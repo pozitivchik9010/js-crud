@@ -21,9 +21,6 @@ app.engine(
     layoutsDir: __dirname + '/src/layout/',
     partialsDir: {
       dir: __dirname + '/src/component/',
-      rename: (filePath) => {
-        return `${filePath.split('/')[0]}`
-      },
     },
   }),
 )

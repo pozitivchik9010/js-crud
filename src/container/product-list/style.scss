@@ -1,0 +1,73 @@
+@use '../../lib/service.scss' as s;
+
+.form {
+	display: flex;
+	flex-direction: column;
+	padding: s.space(4);
+	gap: s.space(8);
+
+	&__title {
+		font-size: 32px;
+		font-weight: bold;
+		 padding-bottom: s.space(1);
+		color: #133ae9;
+	}
+	
+
+}
+
+.card {
+	
+	background-color: rgb(255, 255, 255);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	padding: 20px;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap:s.space(4);
+
+	&__list { display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		width: 100%;
+		max-width: 1200px;
+		gap: 40px 20px;
+		}
+
+	&__title {
+		font-size: 20px;
+		font-weight: lighter;	
+	}
+	&__description {
+			font-size: 16px;
+		}
+
+		&__info {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+	&__id {
+		color: gray; 
+		font-size: 14px; 
+		opacity: 0.7; 
+	}
+
+	&__price {
+		font-size: 24px; 
+    font-weight: bold; 
+    color: #000; 
+	}
+
+	&__button {
+		display: grid;
+		padding: s.space(2);
+		text-decoration: none;
+
+		color: rgb(0, 162, 255);
+
+	}
+
+	
+}
