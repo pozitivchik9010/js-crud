@@ -1,0 +1,17 @@
+.item {
+  display: flex;
+}
+
+.list-item {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+}
+.list-item__main {
+  display: flex;
+  color: #808080;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style.css.map */

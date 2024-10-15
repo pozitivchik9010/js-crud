@@ -1,0 +1,22 @@
+<main class="main">
+
+	{{#with data.purchase}}
+	<form method="POST" action="/purchase-update?id={{id}}" class="form-card">
+
+		{{> heading/index title="Зміна данних"}}
+		{{> field-info/index value=id label="ID:" name="ID"}}
+
+
+		<div class="field-info_big">
+			{{> field/index value=lastname label="Прізвище:" name="lastname"}}
+			{{> field/index value=firstname label="Ім'я:" name="firstname"}}
+			{{> field/index value=email label="Електронна пошта:" name="email"}}
+			{{> field/index value=phone label="Телефон:" name="phone"}}
+
+		</div>
+
+		{{> button/index text="Зберегти зміни"}}
+
+		{{/with}}
+
+</main>

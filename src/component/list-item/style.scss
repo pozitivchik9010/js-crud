@@ -1,0 +1,18 @@
+@use '../../lib/service.scss' as s;	
+
+
+.item {
+	display: flex;
+}
+.list-item {
+	width: 100%;
+	display: grid;
+	gap:10px;
+	padding: 10px;
+
+	&__main {
+		display: flex;
+		color: s.color(label-ligth);
+		align-items: center;
+	}
+}
