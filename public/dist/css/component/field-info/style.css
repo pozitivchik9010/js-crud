@@ -1,0 +1,26 @@
+.field-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.field-info__label {
+  font-size: 14px;
+  color: #343A40;
+}
+
+.field-info__input {
+  border: 1px solid #ddd;
+  padding: 4px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.field-info--disabled {
+  position: absolute;
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */

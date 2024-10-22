@@ -1,4 +1,4 @@
-.alert {
+.card {
   margin: 24px;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.alert__button {
+.card__button {
   display: grid;
   border: 1px solid #ddd;
   padding: 8px;
@@ -17,11 +17,11 @@
   text-decoration: none;
   color: white;
 }
-.alert__title {
+.card__title {
   font-size: 20px;
   font-weight: bold;
 }
-.alert div {
+.card div {
   display: flex;
   flex-direction: column;
   gap: 12px;

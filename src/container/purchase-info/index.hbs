@@ -1,0 +1,42 @@
+<main class="main">
+
+	{{#with data.purchase}}
+	<form method="POST" action="/purchase-edit?id={{id}}" class="form-card">
+
+		{{> heading/index title="Інформація про замовлення"}}
+		{{> field-info/index value=id label="ID:" name="ID" nonebord=true}}
+		{{> divider/index}}
+
+
+		<div class="field-info_big">
+			{{> field-info/index value=firstname label="Ім'я:" name="firstname" }}
+			{{> field-info/index value=lastname label="Прізвище:" name="lastname"}}
+			{{> field-info/index value=phone label="Телефон:" name="phone"}}
+			{{> field-info/index value=email label="Електронна пошта:" name="email"}}
+
+		</div>
+
+		{{> divider/index}}
+
+
+
+		{{> field-info/index value=product/title label="Назва товару:" name="product/title"}}
+		{{> field-info/index value=comment label="Коментар:" name="comment"}}
+
+		{{> divider/index}}
+
+		<div class="field-info_big">
+			{{> field-info/index value=productPrice label="Вартість товарів:" name="productPrice" uah=true}}
+			{{> field-info/index value=deliveryPrice label="Вартість доставки:" name="deliveryPrice" uah=true}}
+			{{> field-info/index value=totalPrice label="Сума до сплати:" name="totalPrice" uah=true}}
+			{{> field-info/index value=bonus label="Нараховані бонуси:" name="bonus" uah=true}}
+
+		</div>
+
+		{{> divider/index}}
+
+		{{> button/index text="Змінити дані"}}
+
+	</form>
+	{{/with}}
+</main>

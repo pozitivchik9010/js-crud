@@ -1,0 +1,29 @@
+<main class="main">
+
+	{{#with data.purchases}}
+	{{> heading/index title="Мої замовлення"}}
+
+	{{#if isEmpty}}
+	<mark>Список замовлень пустий</mark>
+	{{else}}
+	<ul class="card__list">
+		{{#each list}}
+		<li>
+			<a href="/purchase-info?id={{id}}" class="item">
+				{{> list-item/index value=id name="ID" main-item=true}}
+				{{> list-item/index value=product/title name="Товари"}}
+				{{> list-item/index value=totalPrice name="Сума замовлення" uah=true}}
+				{{> list-item/index value=bonus name="Нараховані бонуси" uah=true}}
+			</a>
+		</li>
+		{{#unless @last}}
+		{{> divider/index}}
+		{{/unless}}
+		{{/each}}
+
+	</ul>
+	{{/if}}
+
+
+	{{/with}}
+</main>

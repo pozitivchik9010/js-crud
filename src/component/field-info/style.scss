@@ -1,0 +1,27 @@
+@use '../../lib/service.scss' as s;
+.field-info {
+	display: flex;
+	flex-direction: column;
+	gap: s.space(1);
+	width: 100%;
+}
+
+.field-info__label {
+	font-size: 14px;
+	color: s.color(label)
+}
+
+.field-info__input {
+	border: 1px solid s.color('light');
+	padding: s.space(1);
+	border-radius: 10px; 
+
+		border: none;
+		outline: none;
+	
+}
+
+.field-info--disabled {
+	position: absolute;
+	display: none;
+}

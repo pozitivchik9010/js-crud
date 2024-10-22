@@ -1,0 +1,11 @@
+<div class="field-info {{#if disabled}}field-info--disabled{{/if}}">
+
+	{{!-- <span>{{text}}</span>
+	<span>{{value}}</span> --}}
+
+	<div class="field-info">
+		<label for="{{name}}"
+			class="field-info__label {{#if nonebord}}field-info__label-nonebord{{/if}}">{{label}}</label>
+		<input name="{{name}}" value="{{value}} {{#if uah}}₴{{/if}}" readonly class="field-info__input">
+	</div>
+</div>

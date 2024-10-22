@@ -1,0 +1,58 @@
+@use '../../lib/service.scss' as s;	
+
+@use '../../component/heading/style.scss' as heading;
+@use '../../component/purchase-product/style.scss' as purchaseProduct;
+@use '../../component/field/style.scss' as field-info;
+@use '../../component/field-info/style.scss' as field;
+@use '../../component/divider/style.scss' as divider;
+@use '../../component/button/style.scss' as button;
+@use '../../component/list-item/style.scss' as list-item;
+
+
+
+
+
+.main {
+	display: flex;
+	flex-direction: column;
+	gap: s.space(10);
+	padding: s.space(10);
+
+
+}
+
+.form-card {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: s.space(5);
+	padding: s.space(5);
+	border: 1px solid s.color(border);
+	border-radius: 10px;
+
+	background: #fff;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	
+}
+
+.field-info_big {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: s.space(5)
+}
+
+.cart {
+	display: grid;
+	gap: s.space(2);
+}
+
+.cart__item {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.card__list {
+	display: grid;
+	gap: 10px;
+}
