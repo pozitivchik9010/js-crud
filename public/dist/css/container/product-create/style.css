@@ -67,17 +67,17 @@
   background-color: rgb(48, 48, 238);
   transition: background-color 0.3s;
   color: white;
-  width: 100%;
+  max-width: 100%;
+  text-decoration: none;
+}
+.form__button:hover {
+  opacity: 0.7;
 }
 
 main {
   display: flex;
   flex-direction: column;
   gap: 40px;
-}
-
-button:hover {
-  opacity: 0.7;
 }
 
 /*# sourceMappingURL=style.css.map */

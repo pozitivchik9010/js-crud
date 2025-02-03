@@ -3,6 +3,9 @@
 		<h1 class="card__title">{{data.message}}</h1>
 		<p>{{data.info}}</p>
 	</div>
-
+	{{#if data.link}}
 	<a href='{{data.link}}' class="card__button">Повернутись назад</a>
+	{{else}}
+	<button onclick='window.history.back()' class="card__button">Повернутись назад</button>
+	{{/if}}
 </div>

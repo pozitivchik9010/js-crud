@@ -1,6 +1,9 @@
 <section>
+
+	{{> back-button/index link='/home'}}
 	<div class="form">
 		<h1 class="form__title">Список товарів</h1>
+		<a href="/product-create" class="form__button">Створити товар + </a>
 		<div class="product-list">
 			{{#with data.products}}
 			{{#if isEmpty}}

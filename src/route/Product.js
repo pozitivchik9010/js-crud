@@ -71,21 +71,33 @@ router.get('/product-create', function (req, res) {
 // =================================================================
 router.post('/product-create', function (req, res) {
   const { name, price, description } = req.body
+  if ((name, price, description)) {
+    const product = new Product(
+      name,
+      Number(price),
+      description,
+    )
 
-  const product = new Product(
-    name,
-    Number(price),
-    description,
-  )
+    Product.add(product)
 
-  Product.add(product)
+    res.render('alert', {
+      style: 'alert',
+      data: {
+        message: 'Успіх!',
+        info: 'Товар успішно створено!',
 
-  console.log(Product.getList())
-
-  res.render('alert', {
-    style: 'alert',
-    message: 'Товар успішно створено!',
-  })
+        link: '/product-list',
+      },
+    })
+  } else {
+    res.render('alert', {
+      style: 'alert',
+      data: {
+        message: 'Помилка',
+        info: 'Заповніть необхідні поля!',
+      },
+    })
+  }
 })
 // ================================================================
 router.get('/product-list', function (req, res) {
@@ -117,12 +129,20 @@ router.get('/product-delete', function (req, res) {
   if (deleted) {
     res.render('alert', {
       style: 'alert',
-      message: 'Товар видалено',
+      data: {
+        message: 'Успіх',
+        info: 'Товар успішно видалено!',
+        link: '/product-list',
+      },
     })
   } else {
     res.render('alert', {
       style: 'alert',
-      message: 'Товар не знайдено',
+      data: {
+        message: 'Помилка',
+        info: 'Товар не знайдено!',
+        link: '/product-list',
+      },
     })
   }
 })
@@ -135,12 +155,21 @@ router.get('/product-edit', function (req, res) {
   const product = Product.getById(Number(id))
 
   if (!product) {
-    return res
-      .status(404)
-      .render('error', { message: 'Продукт не знайдено' })
+    res.render('alert', {
+      style: 'alert',
+      data: {
+        message: 'Товар не знайдено!',
+        link: '/product-list',
+      },
+    })
   }
   res.render('product-edit', {
     style: 'product-edit',
+    data: {
+      message: 'Успіх!',
+      info: 'Товар успішно відредаговано!',
+      link: '/product-list',
+    },
     product,
   })
 })
@@ -153,7 +182,7 @@ router.post('/product-update', function (req, res) {
   let result = false
 
   const product = Product.getById(Number(id))
-  console.log(Product.getList())
+  //   console.log(Product.getList())
   if (product) {
     Product.update(product, { name, price, description })
     result = true
@@ -161,9 +190,13 @@ router.post('/product-update', function (req, res) {
 
   res.render('alert', {
     style: 'alert',
-    message: result
-      ? 'Товар успішно оновлено'
-      : 'Сталася помилка',
+    data: {
+      message: result ? 'Успіх!' : 'Помилка',
+      info: result
+        ? 'Товар успішно оновлено'
+        : 'Не вдалося оновити товар!',
+      link: '/product-list',
+    },
   })
 })
 

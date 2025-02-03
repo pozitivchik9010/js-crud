@@ -26,7 +26,7 @@ class Product {
   }
   static add = (...data) => {
     const newProduct = new Product(...data)
-    this.#list.push(newProduct)
+    Product.#list.push(newProduct)
   }
 
   static getList = () => {
@@ -80,7 +80,7 @@ class Purchase {
 
     Purchase.#bonusAccount.set(email, updatedBalance)
 
-    console.log(email, updatedBalance)
+    console.log(email, updatedBalance, amount)
     return amount
   }
 
@@ -95,7 +95,7 @@ class Purchase {
 
     this.comment = data.comment || null
 
-    this.bonus = data.bonus || 0
+    this.bonus = data.bonus
 
     this.promocode = data.promocode || null
 
@@ -153,7 +153,7 @@ class Promocode {
     return newPromoCode
   }
   static getByName = (name) => {
-    return this.#list.find(
+    return Promocode.#list.find(
       (promocode) => promocode.name === name,
     )
   }
@@ -168,7 +168,7 @@ Promocode.add(`DISCOUNT50`, 0.5)
 Promocode.add(`SALE24`, 0.75)
 
 Product.add(
-  'https://picsum.photos/200/300',
+  'https://picsum.photos/300/200',
   "Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600/",
   'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС',
   [
@@ -180,7 +180,7 @@ Product.add(
 )
 
 Product.add(
-  'https://picsum.photos/200/300',
+  'https://picsum.photos/300/200',
   "Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600/",
   'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС',
   [{ id: 2, text: 'Топ продажів' }],
@@ -189,7 +189,7 @@ Product.add(
 )
 
 Product.add(
-  'https://picsum.photos/200/300',
+  'https://picsum.photos/300/200',
   "Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600/",
   'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС',
   [{ id: 1, text: 'Готовий до відправки' }],
@@ -197,7 +197,7 @@ Product.add(
   10,
 )
 // ================================================================
-router.get('/', function (req, res) {
+router.get('/purchase', function (req, res) {
   // res.render генерує нам HTML сторінку
 
   // ↙️ cюди вводимо назву файлу з сontainer
@@ -209,7 +209,7 @@ router.get('/', function (req, res) {
   // ↑↑ сюди вводимо JSON дані
 })
 // ================================================================
-router.get('/purchase-product', function (req, res) {
+router.get('/product', function (req, res) {
   const id = Number(req.query.id)
   res.render('purchase-product', {
     style: 'purchase-product',
@@ -244,7 +244,7 @@ router.post('/purchase-create', function (req, res) {
       data: {
         message: 'Помилка',
         info: 'Некоректна кількість товару',
-        link: `/purchase-product?id=${id}`,
+        link: `/purchase-create?id=${id}`,
       },
     })
   }
@@ -351,27 +351,27 @@ router.post('/purchase-submit', function (req, res) {
       data: {
         message: 'Помилка',
         info: 'Некоректні дані',
-        link: `/purchase-list`,
+        link: `/purchase-create?id=${id}`,
       },
     })
   }
 
   if (!firstname || !lastname || !email || !phone) {
-    res.render('alert', {
+    return res.render('alert', {
       style: 'alert',
 
       data: {
         message: "Заповніть обов'язкові поля",
         info: 'Некоректні дані',
-        link: `/purchase-list`,
+        link: `/purchase-create?id=${id}`,
       },
     })
   }
 
-  if (bonus || bonus > 0) {
+  if (bonus > 0) {
     const bonusAmount = Purchase.getBonusBalance(email)
 
-    console.log(bonusAmount)
+    console.log('==================', bonusAmount)
 
     if (bonus > bonusAmount) {
       bonus = bonusAmount
@@ -423,6 +423,7 @@ router.post('/purchase-submit', function (req, res) {
 
 router.get('/purchase-info', function (req, res) {
   const id = Number(req.query.id)
+  console.log('11111111', Purchase.getById(id))
 
   res.render('purchase-info', {
     style: 'purchase-info',

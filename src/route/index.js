@@ -2,6 +2,20 @@
 const express = require('express')
 // Cтворюємо роутер - місце, куди ми підключаємо ендпоїнти
 const router = express.Router()
+// Підключіть файли роутів
+
+const product = require('./Product')
+const purchase = require('./purchase')
+const user = require('./User')
+// Підключіть інші файли роутів, якщо є
+
+// Об'єднайте файли роутів за потреби
+router.use('/', product)
+router.use('/', purchase)
+router.use('/', user)
+
+// Експортуємо глобальний роутер
+module.exports = router
 
 // ================================================================
 class Track {
@@ -61,7 +75,7 @@ Track.create(
   'https://picsum.photos/100/100',
 )
 
-console.log(Track.getList())
+// console.log(Track.getList())
 
 class Playlist {
   static #list = []
@@ -129,6 +143,19 @@ Playlist.makeMix(Playlist.create('Test'))
 Playlist.makeMix(Playlist.create('Test2'))
 Playlist.makeMix(Playlist.create('Test3'))
 // ================================================================
+router.get('/home', function (req, res) {
+  // res.render генерує нам HTML сторінку
+
+  // ↙️ cюди вводимо назву файлу з сontainer
+  res.render('home', {
+    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+    style: 'home',
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+// ================================================================
+
 router.get('/spotify-choose', function (req, res) {
   // res.render генерує нам HTML сторінку
 
@@ -144,7 +171,7 @@ router.get('/spotify-choose', function (req, res) {
 router.get('/spotify-create', function (req, res) {
   const isMix = !!req.query.isMix
 
-  console.log(isMix)
+  //   console.log(isMix)
 
   res.render('spotify-create', {
     style: 'spotify-create',
@@ -176,7 +203,7 @@ router.post('/spotify-create', function (req, res) {
     Playlist.makeMix(playlist)
   }
 
-  console.log(playlist)
+  //   console.log(playlist)
 
   res.redirect(`/spotify-playlist?id=${playlist.id}`)
 })
@@ -303,7 +330,7 @@ router.post('/spotify-search', function (req, res) {
 
   const list = Playlist.findListByValue(value)
 
-  console.log('===========', value)
+  //   console.log('===========', value)
 
   res.render('spotify-search', {
     style: 'spotify-search',

@@ -1,17 +1,18 @@
 @use '../../lib/service.scss' as s;
+@use  '../../lib/form.scss';
+
 
 .form {
-	display: flex;
-	flex-direction: column;
-	padding: s.space(4);
-	gap: s.space(8);
-
+	box-shadow:none;
 	&__title {
 		font-size: 32px;
 		font-weight: bold;
 		 padding-bottom: s.space(1);
 		color: #133ae9;
 	}
+	&__button {
+		width: 200px;
+justify-content: center;	}
 	
 
 }

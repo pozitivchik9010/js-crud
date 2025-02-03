@@ -57,7 +57,7 @@ class User {
 // router.get Створює нам один ентпоїнт
 
 // ↙️ тут вводимо шлях (PATH) до сторінки
-router.get('/', function (req, res) {
+router.get('/user', function (req, res) {
   // res.render генерує нам HTML сторінку
 
   const list = User.getList()
@@ -80,17 +80,30 @@ router.get('/', function (req, res) {
 
 router.post('/user-create', function (req, res) {
   const { email, login, password } = req.body
+  if (!email || !login || !password) {
+    res.render('alert', {
+      style: 'alert',
+      data: {
+        message: 'Помилка!',
+        info: 'Заповніть дані!',
+      },
+    })
+  } else {
+    const user = new User(email, login, password)
 
-  const user = new User(email, login, password)
+    User.add(user)
 
-  User.add(user)
+    console.log(User.getList())
 
-  console.log(User.getList())
-
-  res.render('user-success-info', {
-    style: 'user-success-info',
-    info: 'Користувач створений',
-  })
+    res.render('alert', {
+      style: 'alert',
+      data: {
+        message: 'Успіх!',
+        info: 'Користувач створений',
+        link: '/user',
+      },
+    })
+  }
 })
 
 // ================================================================
@@ -111,20 +124,17 @@ router.get('/user-delete', function (req, res) {
 router.post('/user-update', function (req, res) {
   const { email, password, id } = req.body
 
-  let result = false
+  const result = User.updateById(Number(id), { email })
 
-  const user = User.getById(Number(id))
-
-  if (user && user.verifyPassword(password)) {
-    User.update(user, { email })
-    result = true
-  }
-
-  res.render('user-success-info', {
-    style: 'user-success-info',
-    info: result
-      ? 'Email пошта оновлена'
-      : 'Сталася помилка',
+  res.render('alert', {
+    style: 'alert',
+    data: {
+      message: result ? 'Успіх!' : 'Помилка',
+      info: result
+        ? 'Email пошта оновлена!'
+        : 'Сталася помилка!',
+      link: '/user',
+    },
   })
 })
 

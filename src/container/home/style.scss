@@ -1,0 +1,35 @@
+@use '../../lib/service.scss' as s;
+@use '../alert/style.scss' ;
+
+.main {
+	color:white;
+
+	background-color: #121212;
+	height: 100%;
+}
+.title {
+	padding-top: s.space(4);
+	display: flex;
+	font-size: s.space(7);
+	justify-content: center
+}
+.subtitle {
+	font-size: s.space(5);
+}
+.elem {
+	text-decoration: none;
+}
+.card {
+	color : black;
+	max-width:  100%;
+	&:hover {
+		box-shadow: 2px 5px 10px rgba(177, 0, 0, 0.452);
+
+	}
+
+}
+
+.container-card {
+	display: grid;
+	grid-template-columns: 1fr 1fr ;
+}
