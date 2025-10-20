@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
+		  "build": "npm run sass:build",
 	  "start": "node ./index.js",
 	  "client": "nodemon -e js,hbs,json,css ./index.js",
 	  "watch": "webpack --watch",
