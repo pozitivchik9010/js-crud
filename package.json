@@ -3,12 +3,12 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		  "build": "npm run sass:build",
 	  "start": "node ./index.js",
 	  "client": "nodemon -e js,hbs,json,css ./index.js",
 	  "watch": "webpack --watch",
-	  "sass:build": "sass sсss:public/css",
+	  "sass:build": "sass src:public/dist/css",
 	  "sass:watch": "sass --watch src:public/dist/css",
+	  "build": "npm run sass:build",
 	  "dev": "run-p sass:watch client"
 	},
 	"dependencies": {
@@ -44,4 +44,3 @@
 	  "webpack-cli": "^4.9.2"
 	}
   }
-  
